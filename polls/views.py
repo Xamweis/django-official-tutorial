@@ -1,3 +1,4 @@
+from re import search
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
@@ -7,16 +8,14 @@ from .models import Question, Choice, Product, Customer, Order
 
 
 def index(request):
-    context = {
+    return render(request, "polls/index.html", {
         "products": Product.objects.all()
-    }
-
-    return render(request, "polls/index.html", context)
+    })
 
 
 def purchase(request):
     if request.method == "GET":
-        return render(request, "polls/index.html", {})
+        return index(request)
 
     new_customer = Customer.objects.create(
         firstName=request.POST["first_name"],
@@ -29,26 +28,36 @@ def purchase(request):
     articles_ordered = []
     amounts = []
 
-    for i in range(1, 4):
-        product_count = int(request.POST[f"product_{i}"])
-        if product_count > 0:
-            article = Product.objects.get(id=i)
+    for item_key, item_value in request.POST.items():
+        if item_key.startswith("product"):
+            product_id = search("\d+", item_key).group()
+            product_order_count = int(item_value)
+
+            if product_order_count == 0:
+                continue
+
+            article = Product.objects.get(id=product_id)
             articles_ordered.append(article)
 
-            amounts.append(product_count)
+            amounts.append(product_order_count)
 
             Order.objects.create(
                 customerID=new_customer,
                 articleOrdered=article,
-                amount=product_count
+                amount=product_order_count
             )
 
     return render(request, "polls/confirmation.html", {
         "customer": new_customer,
         "articles_ordered": zip(amounts, articles_ordered),
-        # "amounts": amounts,
         "total_price": 3456.99
     })
+
+    # return HttpResponseRedirect(reverse("polls:order_confirmation"))
+
+
+def order_confirmation(request):
+    return render(request, "polls/confirmation.html", {})
 
 
 # class IndexView(generic.ListView):
