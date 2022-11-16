@@ -16,7 +16,7 @@
 
   <ul>
     {% for article in articles_ordered %}
-    <li>{{ article.product }}</li>
+    <li>{{ article.0 }} &times; {{ article.1.product }}</li>
     {% endfor %}
   </ul>
 
