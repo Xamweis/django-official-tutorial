@@ -46,7 +46,8 @@ def purchase(request):
     return render(request, "polls/confirmation.html", {
         "customer": new_customer,
         "articles_ordered": zip(amounts, articles_ordered),
-        # "amounts": amounts
+        # "amounts": amounts,
+        "total_price": 3456.99
     })
 
 
