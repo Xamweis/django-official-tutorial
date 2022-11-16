@@ -15,10 +15,7 @@
       {% for product in products %}
       <div class="product">
         <h3>{{ product.product }}</h3>
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/7/76/Tellerset_Anmut_Platinum%2C_V%26B_%282%29.jpg"
-          class="product-image"
-        />
+        <img src="{{ product.image_src}}" class="product-image" />
         <p>{{ product.description }}</p>
 
         <label

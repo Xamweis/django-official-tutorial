@@ -9,6 +9,7 @@ class Products(models.Model):
     product = models.CharField(max_length=100, blank=False)
     price = models.DecimalField(decimal_places=2, max_digits=100)
     description = models.TextField(blank=True, null=True)
+    image_src = models.CharField(max_length=200, default="")
 
     def __str__(self):
         return self.product
