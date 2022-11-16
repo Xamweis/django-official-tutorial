@@ -10,6 +10,9 @@ class Products(models.Model):
     price = models.DecimalField(decimal_places=2, max_digits=100)
     description = models.TextField(blank=True, null=True)
 
+    def __str__(self):
+        return self.product
+
 
 class Customer(models.Model):
     # id = models.AutoField(primary_key=True)
