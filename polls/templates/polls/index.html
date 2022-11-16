@@ -12,13 +12,14 @@
     </h2>
 
     <div class="products">
+      {% for product in products %}
       <div class="product">
-        <h3>Teller</h3>
+        <h3>{{ product.product }}</h3>
         <img
           src="https://upload.wikimedia.org/wikipedia/commons/7/76/Tellerset_Anmut_Platinum%2C_V%26B_%282%29.jpg"
           class="product-image"
         />
-        <p>Herausragend schöne Teller</p>
+        <p>{{ product.description }}</p>
 
         <label
           >Anzahl:
@@ -30,113 +31,16 @@
             <option>4</option>
           </select>
         </label>
-        <p class="product-price">€ 39,99</p>
+        <p class="product-price">{{ product.price }}</p>
       </div>
 
-      <div class="product">
-        <h3>Gläser</h3>
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Drinkware.jpg/1024px-Drinkware.jpg"
-          class="product-image"
-        />
-        <p>Herausragend schöne Gläser</p>
-
-        <label
-          >Anzahl:
-          <select>
-            <option>0</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-          </select>
-        </label>
-        <p class="product-price">€ 24,99</p>
-      </div>
-
-      <div class="product">
-        <h3>Besteck</h3>
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/0/07/Taille-rosenthal_hg.jpg"
-          class="product-image"
-        />
-        <p>Herausragend schönes Besteck</p>
-
-        <label
-          >Anzahl:
-          <select>
-            <option>0</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-          </select>
-        </label>
-        <p class="product-price">€ 129,99</p>
-      </div>
-
-      <div class="product">
-        <h3>Topf</h3>
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Toepfe_fcm.jpg"
-          class="product-image"
-        />
-        <p>Herausragend schönes Topf-Set</p>
-
-        <label
-          >Anzahl:
-          <select>
-            <option>0</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-          </select>
-        </label>
-        <p class="product-price">€ 99,99</p>
-      </div>
-
-      <div class="product">
-        <h3>Wok</h3>
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/MealServedInWok.jpg/2560px-MealServedInWok.jpg"
-          class="product-image"
-        />
-        <p>Herausragend schöner Wok (ohne Mahlzeit)</p>
-
-        <label
-          >Anzahl:
-          <select>
-            <option>0</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-          </select>
-        </label>
-        <p class="product-price">€ 249,99</p>
-      </div>
-
-      <div class="product">
-        <h3>Thermomix</h3>
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/7/78/Thermomix_2014.jpg"
-          class="product-image"
-        />
-        <p>Herausragend schöner Thermomix</p>
-
-        <label
-          >Anzahl:
-          <select>
-            <option>0</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-          </select>
-        </label>
-        <p class="product-price">€ 4999,99</p>
-      </div>
+      {% comment %}
+      <li>
+        <a href="{% url 'polls:detail' question.id %}">
+          {{ question.question_text }}
+        </a>
+      </li>
+      {% endcomment %} {% endfor %}
     </div>
   </section>
 
