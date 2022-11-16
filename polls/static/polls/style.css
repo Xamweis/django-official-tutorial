@@ -90,3 +90,23 @@ fieldset legend {
   color: #fff;
   font-size: 100px;
 }
+
+.ordered_products {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ordered_products li {
+  padding: 10px;
+}
+
+.ordered_products li:nth-child(odd) {
+  background: hsl(0, 0%, 90%);
+}
+
+.total_price {
+  margin: 0;
+  padding: 1em 10px;
+  text-align: right;
+}

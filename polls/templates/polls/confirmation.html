@@ -14,13 +14,13 @@
 
   <h3>Artikel</h3>
 
-  <ul>
+  <ul class="ordered_products">
     {% for article in articles_ordered %}
     <li>{{ article.0 }} &times; {{ article.1.product }}</li>
     {% endfor %}
   </ul>
 
-  <p>Gesamtpreis: <strong>0,00 €</strong></p>
+  <p class="total_price">Gesamtpreis: <strong>0,00 €</strong></p>
 
   <h3>Versandadresse</h3>
   <p>{{ customer.firstName }} {{ customer.lastName }}</p>
@@ -28,4 +28,8 @@
   <p>{{ customer.plz }}</p>
 
   <p>{{ customer.email }}</p>
+
+  <hr />
+
+  <p><a href="{% url 'polls:index' %}">Zurück zur Artikelübersicht</a></p>
 </section>
