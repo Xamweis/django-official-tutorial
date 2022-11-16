@@ -4,7 +4,7 @@ from django.db import models
 from django.utils import timezone
 
 
-class Products(models.Model):
+class Product(models.Model):
     # id = models.AutoField(primary_key=True)
     product = models.CharField(max_length=100, blank=False)
     price = models.DecimalField(decimal_places=2, max_digits=100)
@@ -24,10 +24,10 @@ class Customer(models.Model):
     email = models.EmailField(blank=False)
 
 
-class Orders(models.Model):
+class Order(models.Model):
     # id = models.AutoField(primary_key=True)
     orderDate = models.DateTimeField(default=datetime.now)
-    articleOrdered = models.ForeignKey(Products, on_delete=models.CASCADE)
+    articleOrdered = models.ForeignKey(Product, on_delete=models.CASCADE)
     customerID = models.ForeignKey(Customer, on_delete=models.CASCADE)
     amount = models.IntegerField()
 

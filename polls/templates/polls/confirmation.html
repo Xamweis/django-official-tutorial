@@ -1,0 +1,31 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'polls/style.css' %}" />
+
+<section class="section">
+  <h2 class="section-headline">
+    <small>Bestellbestätigung</small>
+    Ihre Bestellung ist eingegangen!
+  </h2>
+
+  <div class="checkmark-container">
+    <div class="checkmark">✔</div>
+  </div>
+
+  <h3>Artikel</h3>
+
+  <ul>
+    {% for article in articles_ordered %}
+    <li>{{ article.product }}</li>
+    {% endfor %}
+  </ul>
+
+  <p>Gesamtpreis: <strong>0,00 €</strong></p>
+
+  <h3>Versandadresse</h3>
+  <p>{{ customer.firstName }} {{ customer.lastName }}</p>
+  <p>{{ customer.street }}</p>
+  <p>{{ customer.plz }}</p>
+
+  <p>{{ customer.email }}</p>
+</section>

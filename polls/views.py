@@ -3,15 +3,51 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.views import generic
 
-from .models import Question, Choice, Products
+from .models import Question, Choice, Product, Customer, Order
 
 
 def index(request):
     context = {
-        "products": Products.objects.all()
+        "products": Product.objects.all()
     }
 
     return render(request, "polls/index.html", context)
+
+
+def purchase(request):
+    if request.method == "GET":
+        return render(request, "polls/index.html", {})
+
+    new_customer = Customer.objects.create(
+        firstName=request.POST["first_name"],
+        lastName=request.POST["last_name"],
+        street=request.POST["street"],
+        plz=request.POST["city"],
+        email=request.POST["email"]
+    )
+
+    articles_ordered = []
+    amounts = []
+
+    for i in range(1, 4):
+        product_count = int(request.POST[f"product_{i}"])
+        if product_count > 0:
+            article = Product.objects.get(id=i)
+            articles_ordered.append(article)
+
+            amounts.append(product_count)
+
+            Order.objects.create(
+                customerID=new_customer,
+                articleOrdered=article,
+                amount=product_count
+            )
+
+    return render(request, "polls/confirmation.html", {
+        "customer": new_customer,
+        "articles_ordered": articles_ordered,
+        "amounts": amounts
+    })
 
 
 # class IndexView(generic.ListView):
