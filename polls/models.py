@@ -23,6 +23,9 @@ class Customer(models.Model):
     plz = models.CharField(max_length=100, blank=False)
     email = models.EmailField(blank=False)
 
+    def __str__(self):
+        return " ".join([f"{self.firstName} {self.lastName}", self.email])
+
 
 class Order(models.Model):
     # id = models.AutoField(primary_key=True)
@@ -30,6 +33,9 @@ class Order(models.Model):
     articleOrdered = models.ForeignKey(Product, on_delete=models.CASCADE)
     customerID = models.ForeignKey(Customer, on_delete=models.CASCADE)
     amount = models.IntegerField()
+
+    def __str__(self):
+        return f"{self.orderDate}"
 
 
 class Question(models.Model):
