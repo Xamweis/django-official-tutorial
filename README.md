@@ -2,7 +2,7 @@
 
 https://docs.djangoproject.com/en/4.1/intro/
 
-## Install django package
+## Install Django package
 
 ```shell
 # https://docs.djangoproject.com/en/4.1/topics/install/
@@ -26,4 +26,7 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-Visit http://127.0.0.1:8000/polls/
+### Visit
+
+- Shop-Frontend: http://127.0.0.1:8000/polls/
+- Admin interface: http://127.0.0.1:8000/admin/ `(User: admin, PW: admin)`
