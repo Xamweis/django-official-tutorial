@@ -1,13 +1,22 @@
 body {
   margin: 2.5em;
-  font-family: 'Helvetica Neue', sans-serif;
+  font-family: "Helvetica Neue", sans-serif;
   background: hsl(0, 0%, 95%);
+}
+
+a {
+  color: royalblue;
 }
 
 .products {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
+}
+
+@media screen and (min-width: 640px) {
+  .products {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .product {
@@ -33,13 +42,19 @@ body {
 .btn-cta {
   width: 100%;
   color: #fff;
-  background: orangered;
   border: none;
+  background: orangered;
   border-radius: 5px;
   margin: 1em 0;
   padding: 16px;
   font-size: 18px;
   font-weight: 500;
+  cursor: pointer;
+  transition: 50ms all ease-in-out;
+}
+
+.btn-cta:hover {
+  background: hsl(16, 100%, 47%);
 }
 
 .section {
@@ -68,7 +83,7 @@ fieldset legend {
   margin: 0 0 1em 0;
 }
 
-.form-field input[type='text'] {
+.form-field input[type="text"] {
   display: block;
   width: 100%;
   padding: 10px;
