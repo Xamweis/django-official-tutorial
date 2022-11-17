@@ -31,7 +31,9 @@ python manage.py runserver
 - Shop-Frontend: http://127.0.0.1:8000/polls/
 - Admin interface: http://127.0.0.1:8000/admin/ `(User: admin, PW: admin)`
 
-### Import / export resource data
+---
+
+## Import / export resource data
 
 https://django-import-export.readthedocs.io/
 
@@ -56,7 +58,7 @@ https://django-import-export.readthedocs.io/
 >>>
 >>> product_resource = resources.modelresource_factory(model=Product)()
 >>>
->>> with open("polls/products.csv", "r") as fh: imported_data = tablib.Dataset().load(fh)
+>>> with open("polls/data/products.csv", "r") as fh: imported_data = tablib.Dataset().load(fh)
 >>>
 >>> result = product_resource.import_data(imported_data, dry_run=True)
 >>> print(result.has_errors())
