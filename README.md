@@ -37,6 +37,14 @@ python manage.py runserver
 
 https://django-import-export.readthedocs.io/
 
+```shell
+# https://django-import-export.readthedocs.io/en/latest/installation.html#installation-and-configuration
+
+pip install django-import-export
+
+python manage.py collectstatic
+```
+
 #### Exporting
 
 ```shell
