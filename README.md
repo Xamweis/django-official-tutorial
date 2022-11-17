@@ -48,7 +48,7 @@ https://django-import-export.readthedocs.io/
 #### Importing
 
 ```shell
-# https://django-import-export.readthedocs.io/en/latest/getting_started.html#exporting-data
+# https://django-import-export.readthedocs.io/en/latest/getting_started.html#importing-data
 
 >>> import tablib
 >>> from import_export import resources
@@ -56,10 +56,10 @@ https://django-import-export.readthedocs.io/
 >>>
 >>> product_resource = resources.modelresource_factory(model=Product)()
 >>>
->>> dataset = tablib.Dataset(['', 'New product', '444.99', 'Description', 'example.jpg'], headers=['id', 'product', 'price', 'description', 'image_src'])
+>>> with open("polls/products.csv", "r") as fh: imported_data = tablib.Dataset().load(fh)
 >>>
->>> result = product_resource.import_data(dataset, dry_run=True)
+>>> result = product_resource.import_data(imported_data, dry_run=True)
 >>> print(result.has_errors())
 >>>
->>> result = product_resource.import_data(dataset, dry_run=False)
+>>> result = product_resource.import_data(imported_data, dry_run=False)
 ```
