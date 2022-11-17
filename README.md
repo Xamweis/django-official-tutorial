@@ -30,3 +30,15 @@ python manage.py runserver
 
 - Shop-Frontend: http://127.0.0.1:8000/polls/
 - Admin interface: http://127.0.0.1:8000/admin/ `(User: admin, PW: admin)`
+
+### Importing / exporting resource data
+
+https://django-import-export.readthedocs.io/
+
+```shell
+# https://django-import-export.readthedocs.io/en/latest/getting_started.html#exporting-data
+
+>>> from polls.admin import ProductResource
+>>> dataset = ProductResource().export()
+>>> print(dataset)
+```

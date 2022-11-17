@@ -11,3 +11,13 @@ admin.site.register(Order)
 class ProductResource(resources.ModelResource):
     class Meta:
         model = Product
+
+
+class CustomerResource(resources.ModelResource):
+    class Meta:
+        model = Customer
+
+
+class OrderResource(resources.ModelResource):
+    class Meta:
+        model = Order
