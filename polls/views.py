@@ -47,10 +47,13 @@ def purchase(request):
                 amount=product_order_count
             )
 
+    total_price = sum([amount * product.price for (amount, product)
+                       in zip(amounts, articles_ordered)])
+
     return render(request, "polls/confirmation.html", {
         "customer": new_customer,
         "articles_ordered": zip(amounts, articles_ordered),
-        "total_price": 3456.99
+        "total_price": total_price
     })
 
     # return HttpResponseRedirect(reverse("polls:order_confirmation"))

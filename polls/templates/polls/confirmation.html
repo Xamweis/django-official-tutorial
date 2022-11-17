@@ -15,8 +15,11 @@
   <h3>Artikel</h3>
 
   <ul class="ordered_products">
-    {% for article in articles_ordered %}
-    <li>{{ article.0 }} &times; {{ article.1.product }}</li>
+    {% for amount, product in articles_ordered %}
+    <li>
+      {{ amount }} &times; {{ product.product }} &middot;
+      <span>{{ product.price }} €</span>
+    </li>
     {% endfor %}
   </ul>
 
