@@ -1,0 +1,7 @@
+id,product,price,description,image_src
+1,Teller,123.99,Eine Beschreibung,https://upload.wikimedia.org/wikipedia/commons/7/76/Tellerset_Anmut_Platinum%2C_V%26B_%282%29.jpg
+2,Gläser,23.99,Eine Beschreibung,https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Drinkware.jpg/1024px-Drinkware.jpg
+3,Besteck,222.99,Eine Beschreibung,https://upload.wikimedia.org/wikipedia/commons/0/07/Taille-rosenthal_hg.jpg
+4,Topf,99.99,Herausragend schönes Topf-Set,https://upload.wikimedia.org/wikipedia/commons/8/8b/Toepfe_fcm.jpg
+5,Wok,249.99,Herausragend schöner Wok (ohne Mahlzeit),https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/MealServedInWok.jpg/2560px-MealServedInWok.jpg
+6,Thermomix,4999.99,Herausragend schöner Thermomix,https://upload.wikimedia.org/wikipedia/commons/7/78/Thermomix_2014.jpg
