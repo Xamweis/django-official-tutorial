@@ -38,6 +38,13 @@ class Order(models.Model):
         return f"{self.orderDate}"
 
 
+class SaleSummary(Order):
+    class Meta:
+        proxy = True
+        verbose_name = 'Sale Summary'
+        verbose_name_plural = 'Sales Summary'
+
+
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date_published')
