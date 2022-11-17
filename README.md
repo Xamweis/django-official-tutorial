@@ -44,7 +44,7 @@ https://django-import-export.readthedocs.io/
 
 >>> from polls.admin import ProductResource
 >>> dataset = ProductResource().export()
->>> print(dataset)
+>>> print(dataset.csv)
 ```
 
 #### Importing
