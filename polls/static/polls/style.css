@@ -106,17 +106,19 @@ fieldset legend {
   font-size: 100px;
 }
 
-.ordered_products {
+.ordered-products {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.ordered_products li {
+.ordered-products li {
+  display: flex;
+  justify-content: space-between;
   padding: 10px;
 }
 
-.ordered_products li:nth-child(odd) {
+.ordered-products li:nth-child(odd) {
   background: hsl(0, 0%, 90%);
 }
 

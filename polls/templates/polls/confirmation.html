@@ -14,10 +14,10 @@
 
   <h3>Artikel</h3>
 
-  <ul class="ordered_products">
+  <ul class="ordered-products">
     {% for amount, product in articles_ordered %}
-    <li>
-      {{ amount }} &times; {{ product.product }} &middot;
+    <li class="ordered-products-item">
+      <span>{{ amount }} &times; {{ product.product }}</span>
       <span>{{ product.price }} €</span>
     </li>
     {% endfor %}
