@@ -35,7 +35,7 @@ class Order(models.Model):
     amount = models.IntegerField()
 
     def __str__(self):
-        return f"{self.orderDate}"
+        return f'{self.orderDate.strftime("%Y-%m-%d – %H:%m%p")} – {self.customerID}'
 
 
 class SaleSummary(Order):
