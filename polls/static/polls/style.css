@@ -1,3 +1,8 @@
+:root {
+  --small-radius: 2px;
+  --large-radius: 5px;
+}
+
 body {
   margin: 2.5em;
   font-family: "Helvetica Neue", sans-serif;
@@ -22,7 +27,7 @@ a {
 .product {
   padding: 16px;
   background: #fff;
-  border-radius: 5px;
+  border-radius: var(--large-radius);
 }
 
 .product h3 {
@@ -31,7 +36,7 @@ a {
 
 .product-image {
   max-width: 100%;
-  border-radius: 2px;
+  border-radius: var(--small-radius);
 }
 
 .product-price {
@@ -44,13 +49,13 @@ a {
   color: #fff;
   border: none;
   background: orangered;
-  border-radius: 5px;
+  border-radius: var(--large-radius);
   margin: 1em 0;
   padding: 16px;
   font-size: 18px;
   font-weight: 500;
   cursor: pointer;
-  transition: 50ms all ease-in-out;
+  transition: 80ms all ease-in-out;
 }
 
 .btn-cta:hover {
@@ -71,6 +76,7 @@ a {
 }
 
 fieldset {
+  margin: 0;
   padding: 0;
   border: none;
 }
@@ -85,9 +91,13 @@ fieldset legend {
 
 .form-field input[type="text"] {
   display: block;
-  width: 100%;
-  padding: 10px;
   box-sizing: border-box;
+  width: 100%;
+  margin: 0.25em 0 1.25em 0;
+  padding: 10px;
+  border: 1px solid hsl(0, 0%, 80%);
+  border-radius: var(--small-radius);
+  font-size: 100%;
 }
 
 .checkmark-container {
