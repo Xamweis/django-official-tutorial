@@ -40,7 +40,7 @@
       <tr class="{% cycle 'row1' 'row2' %}">
         <td>{{ row.articleOrdered__product }}</td>
         <td>{{ row.total | intcomma }}</td>
-        <td>{{ row.total_sales | default:0 | intcomma }}$</td>
+        <td>€ {{ row.total_sales | default:0 | floatformat:2 | intcomma }}</td>
         <td>
           {{row.total_sales | default:0 | percentof:summary_total.total_sales}}
         </td>
@@ -51,7 +51,9 @@
     <tr style="font-weight: bold; border-top: 2px solid #dddddd">
       <td>Total</td>
       <td>{{ summary_total.total | intcomma }}</td>
-      <td>{{ summary_total.total_sales | default:0 }}$</td>
+      <td>
+        € {{ summary_total.total_sales | floatformat:2 | intcomma | default:0 }}
+      </td>
       <td>100%</td>
     </tr>
   </table>
@@ -63,7 +65,7 @@
       display: flex;
       justify-content: space-around;
       height: 160px;
-      padding-top: 60px;
+      padding-top: 160px;
       overflow: hidden;
     }
     .bar-chart .bar {
@@ -86,7 +88,7 @@
     }
     .bar-chart .bar .bar-tooltip {
       position: absolute;
-      top: -60px;
+      top: -50px;
       left: 50%;
       transform: translateX(-50%);
       text-align: center;
@@ -103,7 +105,7 @@
       {% for x in summary_over_time %}
       <div class="bar" style="height:{{x.pct}}%">
         <div class="bar-tooltip">
-          {{x.total | default:0 | intcomma }}<br />
+          €&nbsp;{{x.total | default:0 | floatformat:2 | intcomma }}<br />
           {{x.period | date:"d/m/Y"}}
         </div>
       </div>

@@ -41,8 +41,8 @@ class SaleSummaryAdmin(admin.ModelAdmin):
             return response
 
         metrics = {
-            'total': Count('id'),
-            'total_sales': Sum('articleOrdered__price') * Count('amount'),
+            'total': Sum('amount'),
+            'total_sales': Sum('articleOrdered__price') * Sum('amount'),
         }
 
         response.context_data['summary'] = list(
@@ -65,7 +65,7 @@ class SaleSummaryAdmin(admin.ModelAdmin):
                 period,
                 output_field=DateTimeField(),
             ),
-        ).values('period').annotate(total=Sum('articleOrdered__price')).order_by('period')
+        ).values('period').annotate(total=(Sum('articleOrdered__price')) * Sum('amount')).order_by('period')
 
         summary_range = summary_over_time.aggregate(
             low=Min('total'),
