@@ -8,7 +8,7 @@ from .models import Question, Choice, Product, Customer, Order
 
 
 def index(request):
-    return render(request, "polls/index.html", {
+    return render(request, "shop/index.html", {
         "products": Product.objects.all()
     })
 
@@ -50,7 +50,7 @@ def purchase(request):
     total_price = sum([amount * product.price for (amount, product)
                        in zip(amounts, articles_ordered)])
 
-    return render(request, "polls/confirmation.html", {
+    return render(request, "shop/confirmation.html", {
         "customer": new_customer,
         "articles_ordered": zip(amounts, articles_ordered),
         "total_price": total_price
@@ -60,18 +60,16 @@ def purchase(request):
 
 
 def order_confirmation(request):
-    return render(request, "polls/confirmation.html", {})
+    return render(request, "shop/confirmation.html", {})
 
 
-# class IndexView(generic.ListView):
+class IndexView(generic.ListView):
+    template_name = 'polls/index.html'
+    context_object_name = 'latest_question_list'
 
-#     template_name = 'polls/index.html'
-#     context_object_name = 'latest_question_list'
-
-
-#     def get_queryset(self):
-#         """Return the last five published questions."""
-#         return Question.objects.order_by('-pub_date')[:5]
+    def get_queryset(self):
+        """Return the last five published questions."""
+        return Question.objects.order_by('-pub_date')[:5]
 
 
 class DetailView(generic.DetailView):

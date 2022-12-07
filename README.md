@@ -28,7 +28,7 @@ python manage.py runserver
 
 ### Visit
 
-- Shop-Frontend: http://127.0.0.1:8000/polls/
+- Shop-Frontend: http://127.0.0.1:8000/
 - Admin interface: http://127.0.0.1:8000/admin/ `(User: admin, PW: admin)`
 
 ---
