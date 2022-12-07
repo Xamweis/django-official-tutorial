@@ -1,10 +1,67 @@
+from re import search
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
 
-from .models import Question, Choice
+from .models import Question, Choice, Product, Customer, Order
+
+
+def index(request):
+    return render(request, "shop/index.html", {
+        "products": Product.objects.all()
+    })
+
+
+def purchase(request):
+    if request.method == "GET":
+        return index(request)
+
+    new_customer = Customer.objects.create(
+        firstName=request.POST["first_name"],
+        lastName=request.POST["last_name"],
+        street=request.POST["street"],
+        plz=request.POST["city"],
+        email=request.POST["email"]
+    )
+
+    articles_ordered = []
+    amounts = []
+
+    for item_key, item_value in request.POST.items():
+        if item_key.startswith("product"):
+            product_id = search("\d+", item_key).group()
+            product_order_count = int(item_value)
+
+            if product_order_count == 0:
+                continue
+
+            article = Product.objects.get(id=product_id)
+            articles_ordered.append(article)
+
+            amounts.append(product_order_count)
+
+            Order.objects.create(
+                customerID=new_customer,
+                articleOrdered=article,
+                amount=product_order_count
+            )
+
+    total_price = sum([amount * product.price for (amount, product)
+                       in zip(amounts, articles_ordered)])
+
+    return render(request, "shop/confirmation.html", {
+        "customer": new_customer,
+        "articles_ordered": zip(amounts, articles_ordered),
+        "total_price": total_price
+    })
+
+    # return HttpResponseRedirect(reverse("polls:order_confirmation"))
+
+
+def order_confirmation(request):
+    return render(request, "shop/confirmation.html", {})
 
 
 class IndexView(generic.ListView):

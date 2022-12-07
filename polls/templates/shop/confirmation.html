@@ -1,0 +1,38 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'polls/style.css' %}" />
+
+<section class="section">
+  <h2 class="section-headline">
+    <small>Bestellbestätigung</small>
+    Ihre Bestellung ist eingegangen!
+  </h2>
+
+  <div class="checkmark-container">
+    <div class="checkmark">✔</div>
+  </div>
+
+  <h3>Artikel</h3>
+
+  <ul class="ordered-products">
+    {% for amount, product in articles_ordered %}
+    <li class="ordered-products-item">
+      <span>{{ amount }} &times; {{ product.product }}</span>
+      <span>{{ product.price }} €</span>
+    </li>
+    {% endfor %}
+  </ul>
+
+  <p class="total_price">Gesamtpreis: <strong>{{ total_price }} €</strong></p>
+
+  <h3>Versandadresse</h3>
+  <p>{{ customer.firstName }} {{ customer.lastName }}</p>
+  <p>{{ customer.street }}</p>
+  <p>{{ customer.plz }}</p>
+
+  <p>{{ customer.email }}</p>
+
+  <hr />
+
+  <p><a href="{% url 'polls:index' %}">Zurück zur Artikelübersicht</a></p>
+</section>

@@ -1,0 +1,139 @@
+:root {
+  --small-radius: 2px;
+  --large-radius: 5px;
+}
+
+body {
+  margin: 2.5em;
+  font-family: "Helvetica Neue", sans-serif;
+  background: hsl(0, 0%, 95%);
+}
+
+a {
+  color: royalblue;
+}
+
+.products {
+  display: grid;
+  gap: 16px;
+}
+
+@media screen and (min-width: 640px) {
+  .products {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.product {
+  padding: 16px;
+  background: #fff;
+  border-radius: var(--large-radius);
+}
+
+.product h3 {
+  margin: 0 0 1em 0;
+}
+
+.product-image {
+  max-width: 100%;
+  border-radius: var(--small-radius);
+}
+
+.product-price {
+  font-weight: 300;
+  font-size: 18px;
+}
+
+.btn-cta {
+  width: 100%;
+  color: #fff;
+  border: none;
+  background: orangered;
+  border-radius: var(--large-radius);
+  margin: 1em 0;
+  padding: 16px;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 80ms all ease-in-out;
+}
+
+.btn-cta:hover {
+  background: hsl(16, 100%, 47%);
+}
+
+.section {
+  margin: 0 0 3em 0;
+}
+
+.section-headline small {
+  display: block;
+  margin: 0 0 0.25em 0;
+  font-weight: 500;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+fieldset legend {
+  display: none;
+}
+
+.form-field {
+  margin: 0 0 1em 0;
+}
+
+.form-field input[type="text"] {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0.25em 0 1.25em 0;
+  padding: 10px;
+  border: 1px solid hsl(0, 0%, 80%);
+  border-radius: var(--small-radius);
+  font-size: 100%;
+}
+
+.checkmark-container {
+  margin: 3em 0;
+}
+
+.checkmark {
+  width: 200px;
+  height: 200px;
+  background: limegreen;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 100px;
+}
+
+.ordered-products {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ordered-products li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.ordered-products li:nth-child(odd) {
+  background: hsl(0, 0%, 90%);
+}
+
+.total_price {
+  margin: 0;
+  padding: 1em 10px;
+  text-align: right;
+}
